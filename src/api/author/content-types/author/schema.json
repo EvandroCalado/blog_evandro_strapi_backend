@@ -4,7 +4,8 @@
   "info": {
     "singularName": "author",
     "pluralName": "authors",
-    "displayName": "Author"
+    "displayName": "Author",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -21,18 +22,22 @@
       "required": true
     },
     "image": {
-      "allowedTypes": [
-        "images"
-      ],
       "type": "media",
       "multiple": false,
-      "required": true
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
     },
     "posts": {
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::post.post",
       "mappedBy": "author"
+    },
+    "description": {
+      "type": "text",
+      "required": true
     }
   }
 }
