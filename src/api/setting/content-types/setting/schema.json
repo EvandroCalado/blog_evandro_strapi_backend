@@ -4,7 +4,8 @@
   "info": {
     "singularName": "setting",
     "pluralName": "settings",
-    "displayName": "Setting"
+    "displayName": "Setting",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -20,12 +21,12 @@
       "required": true
     },
     "logo": {
-      "allowedTypes": [
-        "images"
-      ],
       "type": "media",
       "multiple": false,
-      "required": true
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
     },
     "menuLink": {
       "displayName": "menuLink",
@@ -34,7 +35,7 @@
       "component": "menu.menu-link"
     },
     "footer": {
-      "type": "richtext",
+      "type": "string",
       "required": true
     }
   }
