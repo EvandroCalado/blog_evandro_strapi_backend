@@ -853,11 +853,6 @@ export interface ApiProjectProject extends Schema.CollectionType {
       Attribute.Required &
       Attribute.DefaultTo<false>;
     description: Attribute.RichText & Attribute.Required;
-    project_categories: Attribute.Relation<
-      'api::project.project',
-      'manyToMany',
-      'api::project-category.project-category'
-    >;
     ProjectLink: Attribute.Component<'link.project-link', true> &
       Attribute.Required;
     createdAt: Attribute.DateTime;
@@ -871,48 +866,6 @@ export interface ApiProjectProject extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::project.project',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiProjectCategoryProjectCategory
-  extends Schema.CollectionType {
-  collectionName: 'project_categories';
-  info: {
-    singularName: 'project-category';
-    pluralName: 'project-categories';
-    displayName: 'projectCategory';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    displayName: Attribute.String & Attribute.Required;
-    slug: Attribute.UID<
-      'api::project-category.project-category',
-      'displayName'
-    > &
-      Attribute.Required;
-    color: Attribute.String & Attribute.Required;
-    projects: Attribute.Relation<
-      'api::project-category.project-category',
-      'manyToMany',
-      'api::project.project'
-    >;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::project-category.project-category',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::project-category.project-category',
       'oneToOne',
       'admin::user'
     > &
@@ -1032,7 +985,6 @@ declare module '@strapi/strapi' {
       'api::category.category': ApiCategoryCategory;
       'api::post.post': ApiPostPost;
       'api::project.project': ApiProjectProject;
-      'api::project-category.project-category': ApiProjectCategoryProjectCategory;
       'api::project-host.project-host': ApiProjectHostProjectHost;
       'api::setting.setting': ApiSettingSetting;
       'api::tag.tag': ApiTagTag;
